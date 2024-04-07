@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import GameView from "./views/GameView";
+import HomeView from "./views/HomeView";
+import { GameContext } from "./store/game-context";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { isPlaying } = useContext(GameContext);
+  return isPlaying ? <GameView /> : <HomeView />;
 }
 
 export default App;
